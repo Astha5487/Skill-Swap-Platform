@@ -71,8 +71,5 @@ cd backend
 ./mvnw spring-boot:run
 🙌 Contributors
 Built with ❤️ by Astha Jaiswal
-Pull requests welcome!
 
-yaml
-Copy
-Edit
+
