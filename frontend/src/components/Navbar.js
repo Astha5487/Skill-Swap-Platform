@@ -43,7 +43,7 @@ const Navbar = () => {
             <Link to="/search" className="hover:text-primary-200 transition-colors flex items-center">
               <FaSearch className="mr-1" /> Search Skills
             </Link>
-            
+
             {user ? (
               <>
                 <Link to="/swap-requests" className="hover:text-primary-200 transition-colors">
@@ -96,7 +96,7 @@ const Navbar = () => {
             <Link to="/search" className="block py-2 hover:text-primary-200 transition-colors" onClick={toggleMenu}>
               Search Skills
             </Link>
-            
+
             {user ? (
               <>
                 <Link to="/swap-requests" className="block py-2 hover:text-primary-200 transition-colors" onClick={toggleMenu}>

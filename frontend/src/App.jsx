@@ -9,11 +9,10 @@ import Home from './pages/Home.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 
-// These would be implemented next
 // Protected pages
 // import Profile from './pages/Profile';
-// import MySkills from './pages/MySkills';
-// import Search from './pages/Search';
+import MySkills from './pages/MySkills.jsx';
+import Search from './pages/Search.jsx';
 // import SwapRequests from './pages/SwapRequests';
 // import SwapRequestDetail from './pages/SwapRequestDetail';
 // import UserProfile from './pages/UserProfile';
@@ -37,18 +36,12 @@ function App() {
 
             {/* Protected Routes */}
             <Route element={<ProtectedRoute />}>
-              {/* These routes would be implemented next */}
-              {/* <Route path="profile" element={<Profile />} />
+              {/* Routes with implemented components */}
               <Route path="my-skills" element={<MySkills />} />
               <Route path="search" element={<Search />} />
-              <Route path="swap-requests" element={<SwapRequests />} />
-              <Route path="swap-requests/:id" element={<SwapRequestDetail />} />
-              <Route path="users/:id" element={<UserProfile />} /> */}
 
               {/* Placeholder routes until components are created */}
               <Route path="profile" element={<div className="p-8 text-center">Profile Page (Coming Soon)</div>} />
-              <Route path="my-skills" element={<div className="p-8 text-center">My Skills Page (Coming Soon)</div>} />
-              <Route path="search" element={<div className="p-8 text-center">Search Page (Coming Soon)</div>} />
               <Route path="swap-requests" element={<div className="p-8 text-center">Swap Requests Page (Coming Soon)</div>} />
               <Route path="swap-requests/:id" element={<div className="p-8 text-center">Swap Request Detail Page (Coming Soon)</div>} />
               <Route path="users/:id" element={<div className="p-8 text-center">User Profile Page (Coming Soon)</div>} />
