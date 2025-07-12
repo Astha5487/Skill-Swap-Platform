@@ -23,9 +23,6 @@ import java.util.Date;
 @Component
 public class JwtTokenProvider {
 
-    @Value("${jwt.secret}")
-    private String jwtSecret;
-
     @Value("${jwt.expiration}")
     private long jwtExpirationInMs;
 
@@ -34,13 +31,11 @@ public class JwtTokenProvider {
 
     public JwtTokenProvider(UserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
+        // Generate a secure key using Keys.secretKeyFor method as recommended by JWT JWA Specification
+        this.secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     }
 
     private SecretKey getSigningKey() {
-        if (secretKey == null) {
-            byte[] keyBytes = jwtSecret.getBytes();
-            secretKey = Keys.hmacShaKeyFor(keyBytes);
-        }
         return secretKey;
     }
 
