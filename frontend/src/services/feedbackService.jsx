@@ -11,6 +11,16 @@ const feedbackService = {
     }
   },
 
+  // Get average rating for a user
+  getUserRating: async (userId) => {
+    try {
+      const response = await api.get(`/feedback/rating/${userId}`);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+
   // Get feedback given by a user
   getFeedbackGivenByUser: async (userId) => {
     try {

@@ -2,21 +2,21 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { FaUserPlus, FaExchangeAlt } from 'react-icons/fa';
-import { useAuth } from '../context/AuthContext.jsx';
+import { useAuth } from '../context/AuthContext';
 
 const Register = () => {
   const { register: registerUser } = useAuth();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-
+  
   const { register, handleSubmit, formState: { errors }, watch } = useForm();
   const password = watch('password', '');
 
   const onSubmit = async (data) => {
     setIsLoading(true);
     setError('');
-
+    
     try {
       // Create user data object
       const userData = {
@@ -28,7 +28,7 @@ const Register = () => {
         availability: data.availability,
         isPublic: true
       };
-
+      
       const success = await registerUser(userData);
       if (success) {
         navigate('/');
@@ -50,13 +50,13 @@ const Register = () => {
           <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl text-center">
             Create an account
           </h1>
-
+          
           {error && (
             <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
               <span className="block sm:inline">{error}</span>
             </div>
           )}
-
+          
           <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit(onSubmit)}>
             <div>
               <label htmlFor="username" className="block mb-2 text-sm font-medium text-gray-900">
@@ -79,7 +79,7 @@ const Register = () => {
                 <p className="text-red-500 text-xs mt-1">{errors.username.message}</p>
               )}
             </div>
-
+            
             <div>
               <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900">
                 Full Name
@@ -97,7 +97,7 @@ const Register = () => {
                 <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>
               )}
             </div>
-
+            
             <div>
               <label htmlFor="location" className="block mb-2 text-sm font-medium text-gray-900">
                 Location (Optional)
@@ -110,7 +110,7 @@ const Register = () => {
                 {...register('location')}
               />
             </div>
-
+            
             <div>
               <label htmlFor="availability" className="block mb-2 text-sm font-medium text-gray-900">
                 Availability
@@ -132,7 +132,7 @@ const Register = () => {
                 <p className="text-red-500 text-xs mt-1">{errors.availability.message}</p>
               )}
             </div>
-
+            
             <div>
               <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900">
                 Password
@@ -154,7 +154,7 @@ const Register = () => {
                 <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>
               )}
             </div>
-
+            
             <div>
               <label htmlFor="confirmPassword" className="block mb-2 text-sm font-medium text-gray-900">
                 Confirm Password
@@ -173,7 +173,7 @@ const Register = () => {
                 <p className="text-red-500 text-xs mt-1">{errors.confirmPassword.message}</p>
               )}
             </div>
-
+            
             <button
               type="submit"
               className="btn btn-primary w-full flex justify-center items-center"
@@ -187,7 +187,7 @@ const Register = () => {
                 </>
               )}
             </button>
-
+            
             <p className="text-sm font-light text-gray-500">
               Already have an account?{' '}
               <Link to="/login" className="font-medium text-primary-600 hover:underline">

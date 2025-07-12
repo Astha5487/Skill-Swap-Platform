@@ -10,11 +10,11 @@ import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 
 // Protected pages
-// import Profile from './pages/Profile';
+import Profile from './pages/Profile.jsx';
 import MySkills from './pages/MySkills.jsx';
 import Search from './pages/Search.jsx';
-// import SwapRequests from './pages/SwapRequests';
-// import SwapRequestDetail from './pages/SwapRequestDetail';
+import SwapRequests from './pages/SwapRequests';
+import SwapRequestDetail from './pages/SwapRequestDetail';
 // import UserProfile from './pages/UserProfile';
 
 // Admin pages
@@ -41,10 +41,10 @@ function App() {
               <Route path="search" element={<Search />} />
 
               {/* Placeholder routes until components are created */}
-              <Route path="profile" element={<div className="p-8 text-center">Profile Page (Coming Soon)</div>} />
-              <Route path="swap-requests" element={<div className="p-8 text-center">Swap Requests Page (Coming Soon)</div>} />
-              <Route path="swap-requests/:id" element={<div className="p-8 text-center">Swap Request Detail Page (Coming Soon)</div>} />
-              <Route path="users/:id" element={<div className="p-8 text-center">User Profile Page (Coming Soon)</div>} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="users/:id" element={<Profile />} />
+              <Route path="swap-requests" element={<SwapRequests />} />
+              <Route path="swap-requests/:id" element={<SwapRequestDetail />} />
             </Route>
 
             {/* Admin Routes */}

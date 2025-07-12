@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { FaSignInAlt, FaExchangeAlt } from 'react-icons/fa';
-import { useAuth } from '../context/AuthContext.jsx';
+import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
   const { login } = useAuth();
@@ -10,7 +10,7 @@ const Login = () => {
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-
+  
   // Get the redirect path from location state or default to home
   const from = location.state?.from?.pathname || '/';
 
@@ -19,7 +19,7 @@ const Login = () => {
   const onSubmit = async (data) => {
     setIsLoading(true);
     setError('');
-
+    
     try {
       const success = await login(data.username, data.password);
       if (success) {
@@ -42,13 +42,13 @@ const Login = () => {
           <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl text-center">
             Sign in to your account
           </h1>
-
+          
           {error && (
             <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
               <span className="block sm:inline">{error}</span>
             </div>
           )}
-
+          
           <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit(onSubmit)}>
             <div>
               <label htmlFor="username" className="block mb-2 text-sm font-medium text-gray-900">
@@ -67,7 +67,7 @@ const Login = () => {
                 <p className="text-red-500 text-xs mt-1">{errors.username.message}</p>
               )}
             </div>
-
+            
             <div>
               <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900">
                 Password
@@ -89,7 +89,7 @@ const Login = () => {
                 <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>
               )}
             </div>
-
+            
             <button
               type="submit"
               className="btn btn-primary w-full flex justify-center items-center"
@@ -103,7 +103,7 @@ const Login = () => {
                 </>
               )}
             </button>
-
+            
             <p className="text-sm font-light text-gray-500">
               Don't have an account yet?{' '}
               <Link to="/register" className="font-medium text-primary-600 hover:underline">
